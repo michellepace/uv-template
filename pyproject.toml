@@ -21,7 +21,6 @@ dependencies = []
 [dependency-groups]
 dev = [
     "ipykernel>=7.1.0",
-    "jupyter>=1.1.1",
     "nbdime>=4.0.3",
     "pandas>=3.0.0",
     "plotly>=6.5.2",

@@ -4,12 +4,6 @@ repos:
     hooks:
       - id: uv-lock
 
-  - repo: https://github.com/kynan/nbstripout
-    rev: 0.8.1
-    hooks:
-      # Strip Jupyter notebook outputs (normalize notebooks before code checks)
-      - id: nbstripout
-
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.4
     hooks:
@@ -37,8 +31,7 @@ repos:
 
 # Notes:
 # 1. `uv-lock` hook automatically updates the lockfile to ensure it matches specs in pyproject.toml
-# 2. `nbstripout` normalizes notebooks FIRST (before code quality checks)
-# 3. `ruff-format` runs before `ruff-check` (format then lint)
-# 4. `--exit-non-zero-on-fix` flag blocks commits when ruff makes automatic fixes, must review first
-# 5. `pyright` runs type checking to catch type errors before commits
-# 6. `pass_filenames: false` makes pytest run all tests rather than only testing modified files
+# 2. `ruff-format` runs before `ruff-check` (format then lint)
+# 3. `--exit-non-zero-on-fix` flag blocks commits when ruff makes automatic fixes, must review first
+# 4. `pyright` runs type checking to catch type errors before commits
+# 5. `pass_filenames: false` makes pytest run all tests rather than only testing modified files

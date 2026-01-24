@@ -55,12 +55,37 @@ Key project directories and files:
 
 6. Open the test notebook, select the `.venv` Python interpreter, and run it.
 
-<div align="center">
-  <a href="notebook_pic.jpg">
-    <img src="notebook_pic.jpg" alt="VS Code screenshot showing test-setup.ipynb notebook with project code integration. The notebook demonstrates importing from uv_template.play and testing the add() function with successful output. Pink arrows point to the kernel selector in the top right, with 'select' annotation indicating where to choose the Python 3.14 (.venv) environment." width="600">
-  </a>
-  <p><em>Project Structure (left) with Jupyter Notebook (right)</em></p>
-</div>
+  <div align="center">
+    <a href="notebook_pic.jpg">
+      <img src="notebook_pic.jpg" alt="VS Code screenshot showing test-setup.ipynb notebook with project code integration. The notebook demonstrates importing from uv_template.play and testing the add() function with successful output. Pink arrows point to the kernel selector in the top right, with 'select' annotation indicating where to choose the Python 3.14 (.venv) environment." width="600">
+    </a>
+    <p><em>Project Structure (left) with Jupyter Notebook (right)</em></p>
+  </div>
+
+7. [Set up Jupyter Git integration (Recommended)](#-jupyter-notebook-git-integration-recommended) — keeps notebook outputs out of version control while preserving them locally.
+
+## 📓 Jupyter Notebook Git Integration (Recommended)
+
+This project uses [nbstripout](https://github.com/kynan/nbstripout) to keep notebooks clean in Git. It automatically strips cell outputs and metadata when committing, so you get:
+
+- **Cleaner diffs** — only code changes, not output noise
+- **Smaller repos** — no large binary outputs bloating history
+- **Fewer merge conflicts** — outputs don't clash between branches
+- **No re-running after commits** — your local notebook keeps its outputs; only the version sent to Git is stripped
+
+**One-time global setup** (works for all your current and future repos with notebooks):
+
+```bash
+# Install nbstripout as a global uv tool
+uv tool install nbstripout
+
+# Configure Git to use it globally
+nbstripout --install --global
+
+# To remove later: nbstripout --uninstall --global && uv tool uninstall nbstripout
+```
+
+Any repo with `*.ipynb filter=nbstripout` in `.gitattributes` (like this one) will now automatically strip outputs on commit.
 
 ## ✨ Customisation & Usage
 
