@@ -1,6 +1,6 @@
 # Python Project Template
 
-![Banner showing uv package manager logo, "Python Template Project" text, and Python logo](x_docs/images/readme-banner.jpg)
+![Banner showing uv package manager logo plus Python logo equals "Python ready to go"](x_docs/images/readme-banner.jpg)
 
 A [uv](https://docs.astral.sh/uv/)-based Python 3.14+ project template configured for test-driven development (pytest) and code quality checks (Ruff, Pyright). These run automatically every time you commit.
 
