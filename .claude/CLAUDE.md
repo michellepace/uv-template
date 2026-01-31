@@ -29,6 +29,8 @@ UV-based Python 3.14+ template with TDD workflow:
 
 ## UV Workflow (Strict)
 
+For `uv` documentation, refer to <https://docs.astral.sh/uv/llms.txt>
+
 - Use `uv run` — never activate venv
 - Use `uv add` — never pip
 - Use `pyproject.toml` — never requirements.txt
