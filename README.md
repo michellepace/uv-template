@@ -1,0 +1,45 @@
+![UV logo with cute Python snake](uv-banner.jpg)
+
+General-purpose [uv](https://docs.astral.sh/uv/) Python template for projects built with AI coding agents. Tooling configured for deterministic feedback.
+
+## Usage
+
+```bash
+# Create a repo from this template
+gh repo create my-project --template michellepace/uv-package-template
+
+# Install pre-commit hooks
+uv run pre-commit install
+```
+
+Prompt to "de-template":
+
+```text
+This repo is a template; help me make it my own.
+
+Rename the package from `uv_package_template` to `my_project` everywhere:
+- the `src/uv_package_template/` directory
+- `pyproject.toml` (project name + `[project.scripts]`)
+- imports and references in `tests/`
+- this `README.md` (replace template content with my project's)
+```
+
+## --package vs --app
+
+Initialised with:
+
+```sh
+uv init --package --python 3.14 --author-from none
+```
+
+`--app` (the default) gives a flat layout with a root `main.py` and **no build system** — uv installs the project's dependencies but not its own code. `--package` makes the code an installed, importable package, which is what's needed the moment a project adds tests or reusable commands.
+
+| What | `--app` (default) | `--package` 🙂 |
+| :--- | :--- | :--- |
+| Layout | flat (`main.py` in root) | `src/<pkg>/__init__.py` |
+| `[build-system]` | none | `uv_build` backend |
+| Code installed into `.venv`? | no (deps only) | yes (editable) |
+| `import <pkg>` resolves | only from cwd | anywhere (proper package) |
+| `[project.scripts]` named commands | no (needs a build system) | yes (`uv run <command>`) |
+| `src/` + `tests/` layout | no | yes |
+| Good for | quick scripts, throwaway apps | tested projects, CLIs, anything reused |

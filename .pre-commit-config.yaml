@@ -1,0 +1,47 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-merge-conflict         # block on merge markers
+
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.11.17
+    hooks:
+      - id: uv-lock                      # keep uv.lock ↔ pyproject.toml in sync
+
+  - repo: local
+    hooks:
+      - id: ruff-format
+        name: ruff format
+        entry: uv run ruff format
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      - id: ruff-check                    # after format, so it validates formatted code
+        name: ruff check
+        entry: uv run ruff check --fix --exit-non-zero-on-fix
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      - id: pyright                       # ruff lints; pyright type-checks
+        name: pyright
+        entry: uv run pyright
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      - id: pytest
+        name: pytest
+        entry: uv run pytest
+        language: system
+        types: [python]
+        pass_filenames: false
+
+# Notes:
+# `pass_filenames: false` runs hook against the whole project, not just changed files
