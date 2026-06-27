@@ -17,14 +17,14 @@
     "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
     "python.terminal.activateEnvironment": false, // don't auto-activate; use `uv run`
 
-    // 🐍 Ruff: Python lint & format — editor behaviour only (rules in pyproject.toml)
+    // 🐍 Ruff: Python lint & format (see pyproject.toml)
     "ruff.nativeServer": "on",  // faster Rust-based language server
     "[python]": {
         "editor.defaultFormatter": "charliermarsh.ruff",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-            "source.fixAll.ruff": "explicit",         // apply Ruff autofixes on save
-            "source.organizeImports.ruff": "explicit" // sort & prune imports on save
+            "source.fixAll.ruff": "explicit", // autofix on save
+            "source.organizeImports.ruff": "explicit" // organise on save
         }
     },
 
