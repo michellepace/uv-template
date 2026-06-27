@@ -35,6 +35,8 @@ addopts = "-ra"       # show summary skipped/failed end of run
 [tool.pyright]
 typeCheckingMode = "standard" # Keep (not strict!)
 pythonVersion = "3.14"
+venvPath = "."                # Claude Code Official: LSP plugin
+venv = ".venv"                # Claude Code Official: LSP plugin
 reportUnusedImport = false    # Ruff F401
 reportUnusedVariable = false  # Ruff F841
 reportDuplicateImport = false # Ruff F811
