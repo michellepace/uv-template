@@ -2,46 +2,62 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
+      - id: check-merge-conflict    # block on merge markers
+        fail_fast: true
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-yaml
+      - id: check-json
+        exclude: ^\.vscode/         # .vscode/*.json is JSONC
       - id: check-toml
-      - id: check-merge-conflict         # block on merge markers
+
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.22.1
+    hooks:
+      - id: markdownlint-cli2       # lint + autofix markdown
+        args: [--fix]
+
+  - repo: https://github.com/ComPWA/taplo-pre-commit
+    rev: v0.9.3
+    hooks:
+      - id: taplo-format            # format TOML
+        types: [toml]
 
   - repo: https://github.com/astral-sh/uv-pre-commit
     rev: 0.11.25
     hooks:
-      - id: uv-lock                      # keep uv.lock ↔ pyproject.toml in sync
+      - id: uv-lock                 # sync uv.lock ↔ pyproject.toml
 
   - repo: local
     hooks:
-      - id: ruff-format
-        name: ruff format
-        entry: uv run ruff format
-        language: system
-        types: [python]
-        pass_filenames: false
-
-      - id: ruff-check                    # after format, so it validates formatted code
+      - id: ruff-check              # lint + autofix first
         name: ruff check
         entry: uv run ruff check --fix --exit-non-zero-on-fix
         language: system
-        types: [python]
+        types_or: [python, pyproject]
         pass_filenames: false
 
-      - id: pyright                       # ruff lints; pyright type-checks
+      - id: ruff-format             # format last, so it owns final layout
+        name: ruff format
+        entry: uv run ruff format
+        language: system
+        types_or: [python, pyproject]
+        pass_filenames: false
+
+      - id: pyright                 # ruff lints; pyright type-checks
         name: pyright
         entry: uv run pyright
         language: system
-        types: [python]
+        types_or: [python, pyproject]
         pass_filenames: false
 
-      - id: pytest
+      - id: pytest                  # run tests last
         name: pytest
         entry: uv run pytest
         language: system
-        types: [python]
+        types_or: [python, pyproject]
         pass_filenames: false
 
-# Notes:
-# `pass_filenames: false` runs hook against the whole project, not just changed files
+# Notes (non-obvious)
+# 1. `pass_filenames: false` runs hook against the whole project
+# 2. types_or [python, pyproject] fires on *.py + pyproject.toml only
