@@ -11,7 +11,8 @@
   },
   "enabledPlugins": {
     "git-utils@my-claude-marketplace": true,
-    "superpowers@claude-plugins-official": false
+    "superpowers@claude-plugins-official": false,
+    "pyright-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "my-claude-marketplace": {

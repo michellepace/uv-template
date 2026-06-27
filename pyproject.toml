@@ -1,3 +1,8 @@
+[build-system]
+# Packaged for the [project.scripts] CLIs only; never published.
+requires = ["uv_build>=0.11.25,<0.12"]
+build-backend = "uv_build"
+
 [project]
 name = "uv-package-template"
 version = "0.1.0"
@@ -9,16 +14,12 @@ dependencies = []
 [project.scripts]
 uv-package-template = "uv_package_template:main"
 
-[build-system]
-requires = ["uv_build>=0.11.17,<0.12.0"]
-build-backend = "uv_build"
-
 [dependency-groups]
 dev = [
-    "pre-commit>=4.6.0",
-    "pyright>=1.1.409",
-    "pytest>=9.0.3",
-    "ruff>=0.15.15",
+  "pre-commit>=4.6.0",
+  "pyright>=1.1.411",
+  "pytest>=9.1.1",
+  "ruff>=0.15.20",
 ]
 
 
@@ -31,13 +32,14 @@ addopts = "-ra"       # show summary skipped/failed end of run
 
 # TYPE CHECKING (PYRIGHT)
 # =================================
-# standard: keeps every diagnostic actionable when using untyped libraries
 [tool.pyright]
-typeCheckingMode = "standard" # Keep! (not strict)
+typeCheckingMode = "standard" # Keep (not strict!)
 pythonVersion = "3.14"
-reportUnusedImport = false    # covered by Ruff F401
-reportUnusedVariable = false  # covered by Ruff F841
-reportDuplicateImport = false # covered by Ruff F811
+venvPath = "."                # Claude Code Official: LSP plugin
+venv = ".venv"                # Claude Code Official: LSP plugin
+reportUnusedImport = false    # Ruff F401
+reportUnusedVariable = false  # Ruff F841
+reportDuplicateImport = false # Ruff F811
 
 
 # LINTING (RUFF)
@@ -49,13 +51,20 @@ target-version = "py314"
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [ # ignore incompatible or overly pedantic rules
-    "D100",   # Missing docstring in public module
-    "D104",   # Missing docstring in public package
-    "D203",   # 1 blank line required before class docstring (conflicts with D211)
-    "D213",   # Multi-line docstring summary should start at the second line (conflicts with D212)
-    "COM812", # Trailing comma missing (conflicts with formatter)
-    "ISC001", # Implicitly concatenated string literals on one line (conflicts with formatter)
-    "T201",   # Print found (allow print statements)
+  "D100",   # Missing docstring in public module
+  "D104",   # Missing docstring in public package
+  "D203",   # blank line before class docstring (conflicts with D211)
+  "D213",   # multi-line summary starts on line 2 (conflicts with D212)
+  "COM812", # Trailing comma missing (conflicts with formatter)
+  "ISC001", # implicit string concatenation (conflicts with formatter)
+  "T201",   # Print found (allow print statements)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = [
+  "S101",    # assert statements are idiomatic in tests
+  "PLR2004", # literal expected values are fine
+  "D103",    # docstrings not required on test functions
 ]
 
 [tool.ruff.lint.pydocstyle]
@@ -69,10 +78,3 @@ max-statements = 50
 
 [tool.ruff.lint.mccabe]
 max-complexity = 10
-
-[tool.ruff.lint.per-file-ignores]
-"tests/*" = [
-    "D103",    # Missing docstring in public function
-    "PLR2004", # Magic value used in comparison
-    "S101",    # Use of assert detected
-]

@@ -8,8 +8,8 @@ General-purpose [uv](https://docs.astral.sh/uv/) Python template for projects bu
 # Create a repo from this template
 gh repo create my-project --template michellepace/uv-package-template
 
-# Install pre-commit hooks
-uv run pre-commit install
+# Install dependencies and pre-commit hooks
+uv sync && uv run pre-commit install
 ```
 
 Prompt to "de-template":
