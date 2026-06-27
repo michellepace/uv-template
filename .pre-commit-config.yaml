@@ -9,7 +9,7 @@ repos:
       - id: check-merge-conflict         # block on merge markers
 
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.11.17
+    rev: 0.11.25
     hooks:
       - id: uv-lock                      # keep uv.lock ↔ pyproject.toml in sync
 
