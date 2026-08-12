@@ -1,12 +1,24 @@
 ![UV logo with cute Python snake](uv-banner.jpg)
 
-General purpose [uv](https://docs.astral.sh/uv/) Python template for projects built with AI coding agents. Tooling configured for deterministic feedback.
+General purpose [uv](https://docs.astral.sh/uv/) Python template for projects built with AI coding agents, specifically Claude Code. Tooled up for deterministic feedback.
 
-Dev tooling includes ruff (linting), pyright (type-checking), pytest (testing), pre-commit (running all checks on every commit).
+## Tooling Configured
+
+🌸 Traditional deterministic —
+
+ruff (linting), pyright (type-checking), pytest (testing), pre-commit (running all checks on every commit).
+
+🌸 Plugins (Claude Code Official) —
+
+The [pyright-lsp](https://claude.com/plugins/pyright-lsp) plugin so Claude sees pyright errors as it writes, config in [`pyproject.toml`](pyproject.toml). The wonderful [mattpocock-skills](https://www.aihero.dev/skills), disabled by default. See [`.claude/settings.json`](.claude/settings.json) for both.
+
+> *`mattpocock-skills` AI Skills for Real Engineers. A practical skill system for engineers who want to use AI without giving up their standards.*
 
 ## Usage
 
-Step 1: [Install uv](https://docs.astral.sh/uv/getting-started/installation/) on your machine and then get this template repo without my commit history:
+Pre-requisite: install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your machine
+
+Step 1: Get this template repo without my commit history:
 
 ```shell
 # Use this template to create your own repo "my-project" (on GitHub)
@@ -20,7 +32,7 @@ cd my-project
 uv sync && uv run pre-commit install
 ```
 
-Step 2: Prompt to "de-template":
+Step 2: Prompt to "de-template" and make it yours:
 
 ```markdown
 This repo is a template; help me make it my own.
@@ -32,11 +44,29 @@ Rename package from `uv_package_template` to `my_project` everywhere:
 - this `README.md` (replace template content with my project's)
 - `.claude/CLAUDE.md` (minimal for now)
 
+Then run `uv sync` to refresh `uv.lock` and reinstall under the new name.
+
 Once complete, ask me about my new project so at the very least we can do
 a one line addition under the title of `.claude/CLAUDE.md`.
 ```
 
-Step 3 (optional): For querying the official uv docs from your agent with `/ask-docs uv [your question]`, see https://github.com/michellepace/docs-for-ai
+Step 3: Choose what to do with Matt Pocock:
+
+```shell
+# Want to use it? Currently disabled, so enable it:
+claude plugin enable mattpocock-skills@claude-plugins-official --scope project
+
+# Not sure? Watch a video
+# https://www.youtube.com/@mattpocockuk
+
+# Don't want it? (it's really good)
+claude plugin uninstall mattpocock-skills@claude-plugins-official --scope project
+# (don't remove the marketplace — pyright-lsp comes from it too)
+```
+
+Step 4 (optional):
+
+Query the official uv docs from your agent with `/ask-docs uv [your question]` — see [michellepace/docs-for-ai](https://github.com/michellepace/docs-for-ai)
 
 ## --package vs --app
 

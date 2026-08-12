@@ -2,6 +2,8 @@
 
 General purpose `uv` Python template (>=3.14) for projects built with AI coding agents. Tooling configured for deterministic feedback.
 
+See `README.md` for template documentation.
+
 ## Development Commands
 
 ```shell
