@@ -1,34 +1,48 @@
 ![UV logo with cute Python snake](uv-banner.jpg)
 
-General-purpose [uv](https://docs.astral.sh/uv/) Python template for projects built with AI coding agents. Tooling configured for deterministic feedback.
+General purpose [uv](https://docs.astral.sh/uv/) Python template for projects built with AI coding agents. Tooling configured for deterministic feedback.
+
+Dev tooling includes ruff (linting), pyright (type-checking), pytest (testing), pre-commit (running all checks on every commit).
 
 ## Usage
 
-```bash
-# Create a repo from this template
-gh repo create my-project --template michellepace/uv-package-template
+Step 1: [Install uv](https://docs.astral.sh/uv/getting-started/installation/) on your machine and then get this template repo without my commit history:
+
+```shell
+# Use this template to create your own repo "my-project" (on GitHub)
+gh repo create my-project --template michellepace/uv-package-template --private
+
+# Clone it to your machine
+gh repo clone my-project
+cd my-project
 
 # Install dependencies and pre-commit hooks
 uv sync && uv run pre-commit install
 ```
 
-Prompt to "de-template":
+Step 2: Prompt to "de-template":
 
-```text
+```markdown
 This repo is a template; help me make it my own.
 
-Rename the package from `uv_package_template` to `my_project` everywhere:
+Rename package from `uv_package_template` to `my_project` everywhere:
 - the `src/uv_package_template/` directory
 - `pyproject.toml` (project name + `[project.scripts]`)
 - imports and references in `tests/`
 - this `README.md` (replace template content with my project's)
+- `.claude/CLAUDE.md` (minimal for now)
+
+Once complete, ask me about my new project so at the very least we can do
+a one line addition under the title of `.claude/CLAUDE.md`.
 ```
+
+Step 3 (optional): For querying the official uv docs from your agent with `/ask-docs uv [your question]`, see https://github.com/michellepace/docs-for-ai
 
 ## --package vs --app
 
 Initialised with:
 
-```sh
+```shell
 uv init --package --python 3.14 --author-from none
 ```
 
