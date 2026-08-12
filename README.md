@@ -37,19 +37,23 @@ uv sync && uv run pre-commit install
 Step 2: Prompt to "de-template" and make it yours:
 
 ```markdown
-This repo is a template; help me make it my own.
+# TASK: Help me make this template my own
 
-Rename package from `uv_package_template` to `my_project` everywhere:
-- the `src/uv_package_template/` directory
-- `pyproject.toml` (project name + `[project.scripts]`)
-- imports and references in `tests/`
-- this `README.md` (replace template content with my project's)
-- `.claude/CLAUDE.md` (minimal for now)
+Take my project's name from this repo's name and make the template mine.
 
-Then run `uv sync` to refresh `uv.lock` and reinstall under the new name.
+First read @README.md — but don't rename anything inside it yet.
 
-Once complete, ask me about my new project so at the very least we can do
-a one line addition under the title of `.claude/CLAUDE.md`.
+1. Rename/replace everywhere except `README.md`, then verify with
+   `uv sync && uv run pre-commit install && uv run pre-commit run --all-files`
+
+2. Rewrite `README.md` and `.claude/CLAUDE.md` for my project
+
+3. In a friendly way, ask me if I want to:
+    - Remove plugin `git-utils` and its marketplace `my-claude-marketplace` (it's Michelle's)
+    - Enable plugin `mattpocock-skills` and try the `/grilling` Skill
+
+Await my confirmation, then do it with `claude plugin` commands (`--scope project`).
+I like simple clear messages with emojis 🙂.
 ```
 
 Step 3: Choose what to do with Matt Pocock:

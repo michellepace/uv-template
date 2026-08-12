@@ -8,4 +8,4 @@ if TYPE_CHECKING:
 
 def test_main_runs(capsys: pytest.CaptureFixture[str]) -> None:
     main()
-    assert capsys.readouterr().out == "Hello from uv-package-template!\n"
+    assert capsys.readouterr().out == "Hello!\n"
