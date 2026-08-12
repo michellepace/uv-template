@@ -44,7 +44,7 @@ Take my project's name from this repo's name and make the template mine.
 First read @README.md — but don't rename anything inside it yet.
 
 1. Rename/replace everywhere except `README.md`, then verify with
-   `uv sync && uv run pre-commit install && uv run pre-commit run --all-files`
+   `uv sync --reinstall && uv run pre-commit install && uv run pre-commit run --all-files`
 
 2. Rewrite `README.md` and `.claude/CLAUDE.md` for my project
 
