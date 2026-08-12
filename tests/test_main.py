@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from uv_package_template import main
+from uv_template import main
 
 if TYPE_CHECKING:
     import pytest

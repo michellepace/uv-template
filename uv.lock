@@ -219,7 +219,7 @@ wheels = [
 ]
 
 [[package]]
-name = "uv-package-template"
+name = "uv-template"
 version = "0.1.0"
 source = { editable = "." }
 

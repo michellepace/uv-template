@@ -24,7 +24,7 @@ Step 1: Get this template repo without my commit history:
 
 ```shell
 # Use this template to create your own repo "my-project" (on GitHub)
-gh repo create my-project --template michellepace/uv-package-template --private
+gh repo create my-project --template michellepace/uv-template --private
 
 # Clone it to your machine
 gh repo clone my-project
