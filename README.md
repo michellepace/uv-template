@@ -1,16 +1,18 @@
 ![UV logo with cute Python snake](uv-banner.jpg)
 
-General purpose [uv](https://docs.astral.sh/uv/) Python template for projects built with AI coding agents, specifically Claude Code. Tooled up for deterministic feedback.
+General purpose [uv](https://docs.astral.sh/uv/) Python template for projects built with AI coding agents, specifically Claude Code.
+
+Tooled up for deterministic feedback and a wonderful workflow.
 
 ## Tooling Configured
 
-🌸 Traditional deterministic —
+🌸 DETERMINISTIC
 
 ruff (linting), pyright (type-checking), pytest (testing), pre-commit (running all checks on every commit).
 
-🌸 Plugins (Claude Code Official) —
+🌸 PLUGINS
 
-The [pyright-lsp](https://claude.com/plugins/pyright-lsp) plugin so Claude sees pyright errors as it writes, config in [`pyproject.toml`](pyproject.toml). The wonderful [mattpocock-skills](https://www.aihero.dev/skills), disabled by default. See [`.claude/settings.json`](.claude/settings.json) for both.
+The [pyright-lsp](https://claude.com/plugins/pyright-lsp) plugin so Claude sees pyright errors as it writes, config in [`pyproject.toml`](pyproject.toml). The wonderful [mattpocock-skills](https://www.aihero.dev/skills) workflow, disabled by default. See [`.claude/settings.json`](.claude/settings.json), both from the Claude Code Official marketplace.
 
 > *`mattpocock-skills` AI Skills for Real Engineers. A practical skill system for engineers who want to use AI without giving up their standards.*
 
@@ -64,26 +66,26 @@ claude plugin uninstall mattpocock-skills@claude-plugins-official --scope projec
 # (don't remove the marketplace — pyright-lsp comes from it too)
 ```
 
-Step 4 (optional):
+Step 4: Install the recommended VS Code [`extensions.json`](.vscode/extensions.json)
 
-Query the official uv docs from your agent with `/ask-docs uv [your question]` — see [michellepace/docs-for-ai](https://github.com/michellepace/docs-for-ai)
+Step 5 (optional):
 
-## --package vs --app
+Query official uv docs from your agent with `/ask-docs uv [your question]` — see [michellepace/docs-for-ai](https://github.com/michellepace/docs-for-ai)
 
-Initialised with:
+## This project is a "packaged application"
 
-```shell
-uv init --package --python 3.14 --author-from none
-```
+> *A Python project must be built to be installed. This process is generally referred to as "packaging". See [uv project config docs](https://docs.astral.sh/uv/concepts/projects/config/#project-packaging)*.
 
-`--app` (the default) gives a flat layout with a root `main.py` and **no build system** — uv installs the project's dependencies but not its own code. `--package` makes the code an installed, importable package, which is what's needed the moment a project adds tests or reusable commands.
+The docs say you probably need a package if you want to: add commands to the project, use a `src`/`tests` layout, write a library, or distribute to others (PyPI). This template needs the first two. Happily, a packaged application is now the `uv init` default (since uv 0.12)!
 
-| What | `--app` (default) | `--package` 🙂 |
+A **packaged application** gives you three things: a `src/<pkg>/` layout, a `[build-system]` (the `uv_build` backend), and a `[project.scripts]` for commands.
+
+"Packaged" just means uv builds and installs *your own code* into `.venv` alongside your dependencies — a local install, nothing to do with PyPI. This lets `import <pkg>` work from anywhere (such as `tests/`), and named commands run via `uv run <command>`.
+
+This project was initialised with `uv init` (the default):
+
+| Command | You get | Good for |
 | :--- | :--- | :--- |
-| Layout | flat (`main.py` in root) | `src/<pkg>/__init__.py` |
-| `[build-system]` | none | `uv_build` backend |
-| Code installed into `.venv`? | no (deps only) | yes (editable) |
-| `import <pkg>` resolves | only from cwd | anywhere (proper package) |
-| `[project.scripts]` named commands | no (needs a build system) | yes (`uv run <command>`) |
-| `src/` + `tests/` layout | no | yes |
-| Good for | quick scripts, throwaway apps | tested projects, CLIs, anything reused |
+| `uv init` | `src/` layout, your code installed, a CLI command | most projects — anything with tests or commands |
+| `uv init --no-package` | flat `main.py`, no build system, deps only | quick scripts, throwaway experiments |
+| `uv init --lib` | `src/` layout + `py.typed` marker, no CLI command | libraries you'll publish for others to import |
