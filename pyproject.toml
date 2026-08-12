@@ -1,10 +1,10 @@
 [build-system]
 # Packaged for the [project.scripts] CLIs only; never published.
-requires = ["uv_build>=0.11.25,<0.12"]
+requires = ["uv_build>=0.12.1,<0.13"]
 build-backend = "uv_build"
 
 [project]
-name = "uv-package-template"
+name = "uv-template"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -12,15 +12,10 @@ requires-python = ">=3.14"
 dependencies = []
 
 [project.scripts]
-uv-package-template = "uv_package_template:main"
+uv-template = "uv_template:main"
 
 [dependency-groups]
-dev = [
-  "pre-commit>=4.6.0",
-  "pyright>=1.1.411",
-  "pytest>=9.1.1",
-  "ruff>=0.15.20",
-]
+dev = ["pre-commit>=4.6.2", "pyright>=1.1.411", "pytest>=9.1.1", "ruff>=0.16.2"]
 
 
 # TESTING (PYTEST)
@@ -45,7 +40,7 @@ reportDuplicateImport = false # Ruff F811
 # LINTING (RUFF)
 # =================================
 [tool.ruff]
-line-length = 90
+line-length = 88
 target-version = "py314"
 
 [tool.ruff.lint]
@@ -58,13 +53,14 @@ ignore = [ # ignore incompatible or overly pedantic rules
   "COM812", # Trailing comma missing (conflicts with formatter)
   "ISC001", # implicit string concatenation (conflicts with formatter)
   "T201",   # Print found (allow print statements)
+  "CPY001", # Missing copyright notice (never published)
 ]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = [
   "S101",    # assert statements are idiomatic in tests
   "PLR2004", # literal expected values are fine
-  "D103",    # docstrings not required on test functions
+  "D1",      # docstrings not required in tests (D100-D107)
 ]
 
 [tool.ruff.lint.pydocstyle]
