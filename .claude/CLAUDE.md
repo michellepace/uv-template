@@ -23,5 +23,7 @@ uv run ruff format      # format
 uv run ruff check --fix # lint + autofix
 uv run pyright          # type-check
 uv run pytest           # run tests
-uv run pre-commit run --all-files   # run all hooks
+
+uv run pre-commit run --all-files
+uv run pre-commit run markdownlint-cli2 --all-files
 ```
