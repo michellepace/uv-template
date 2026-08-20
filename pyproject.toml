@@ -21,18 +21,18 @@ dev = ["pre-commit>=4.6.2", "pyright>=1.1.411", "pytest>=9.1.1", "ruff>=0.16.3"]
 # TESTING (PYTEST)
 # =================================
 [tool.pytest.ini_options]
-testpaths = ["tests"] # only collect from tests/ (faster)
-addopts = "-ra"       # show summary skipped/failed end of run
+testpaths = ["tests"] # where to look when no path is given on the CLI
+addopts = "-ra"       # end-of-run summary for every non-passing test
 
 
 # TYPE CHECKING (PYRIGHT)
 # =================================
 [tool.pyright]
-typeCheckingMode = "standard" # Keep (not strict!)
+typeCheckingMode = "standard" # pyright's default; strict fights untyped libs
 pythonVersion = "3.14"
 venvPath = "."                # Claude Code Official: LSP plugin
 venv = ".venv"                # Claude Code Official: LSP plugin
-reportUnusedImport = false    # Ruff F401
+reportUnusedImport = false    # Ruff F401 covers it
 reportUnusedVariable = false  # Ruff F841
 reportDuplicateImport = false # Ruff F811
 
@@ -66,11 +66,12 @@ ignore = [ # ignore incompatible or overly pedantic rules
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
+# Both sections restate Ruff's defaults — kept visible
 [tool.ruff.lint.pylint]
-max-args = 5
-max-branches = 12
-max-returns = 6
-max-statements = 50
+max-args = 5        # PLR0913
+max-branches = 12   # PLR0912
+max-returns = 6     # PLR0911
+max-statements = 50 # PLR0915
 
 [tool.ruff.lint.mccabe]
-max-complexity = 10
+max-complexity = 10 # C901
