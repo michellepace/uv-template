@@ -10,6 +10,7 @@
     ]
   },
   "enabledPlugins": {
+    "alwayson-misc@my-claude-marketplace": true,
     "git-utils@my-claude-marketplace": true,
     "pyright-lsp@claude-plugins-official": true,
     "mattpocock-skills@claude-plugins-official": false
