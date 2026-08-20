@@ -10,9 +10,9 @@
     ]
   },
   "enabledPlugins": {
-    "alwayson-misc@my-claude-marketplace": true,
-    "git-utils@my-claude-marketplace": true,
-    "pyright-lsp@claude-plugins-official": true,
+    "alwayson-misc@my-claude-marketplace": false,
+    "git-utils@my-claude-marketplace": false,
+    "pyright-lsp@claude-plugins-official": false,
     "mattpocock-skills@claude-plugins-official": false
   },
   "extraKnownMarketplaces": {
