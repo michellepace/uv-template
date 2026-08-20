@@ -9,7 +9,7 @@ config:
   MD033: false  # forbid inline HTML
   MD034: false  # forbid bare URLs
   MD041: false  # require first line to be H1 heading
-  MD046: false  # enforce a consistent code block style
+  MD046: false  # enforce consistent code block style
 
-  MD060:        # enforce a consistent table column style
+  MD060:        # enforce consistent table column style
     style: compact  # single space around cell content

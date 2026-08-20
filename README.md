@@ -8,73 +8,69 @@ Tooled up for deterministic feedback and a wonderful workflow.
 
 🌸 DETERMINISTIC
 
-ruff (linting), pyright (type-checking), pytest (testing), pre-commit (running all checks on every commit).
+- `ruff` — linting
+- `pyright` — type-checking
+- `pytest` — testing
+- `pre-commit` — check all pre-commit
 
-🌸 PLUGINS
+---
 
-The [pyright-lsp](https://claude.com/plugins/pyright-lsp) plugin so Claude sees pyright errors as it writes, config in [`pyproject.toml`](pyproject.toml). The wonderful [mattpocock-skills](https://www.aihero.dev/skills) workflow, disabled by default. See [`.claude/settings.json`](.claude/settings.json), both from the Claude Code Official marketplace.
+🌸 PLUGINS (all disabled)
 
-> *`mattpocock-skills` AI Skills for Real Engineers. A practical skill system for engineers who want to use AI without giving up their standards.*
+- [`pyright-lsp@claude-plugins-official`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pyright-lsp) — Claude sees pyright errors, see [`pyproject.toml`](pyproject.toml)
+- [`mattpocock-skills@claude-plugins-official`](https://github.com/mattpocock/skills) — Full workflows `grilling`, `tdd`, `to-spec`
+- [`alwayson-misc@my-claude-marketplace`](https://github.com/michellepace/my-claude-marketplace/tree/main/plugins/alwayson-misc) — My own, skills like: `manage-plugins`, `uv-pep723`
+- [`git-utils@my-claude-marketplace`](https://github.com/michellepace/my-claude-marketplace/tree/main/plugins/git-utils) — My own, skills like `gg-commit`, `gg-land-branch`
+
+Plugins that you want to keep must be installed not just configured, run:
+
+```shell
+claude plugin marketplace add <owner/repo> --scope project
+claude plugin enable <plugin>@<marketplace> --scope project
+```
 
 ## Usage
 
-Pre-requisite: install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your machine
+1. Step 1: Install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your machine
 
-Step 1: Get this template repo without my commit history:
+2. Step 2: Get this template repo without my commit history:
 
-```shell
-# Use this template to create your own repo "my-project" (on GitHub)
-gh repo create my-project --template michellepace/uv-template --private
+   ```shell
+   # Use this template to create your own repo "my-project" (on GitHub)
+   gh repo create my-project --template michellepace/uv-template --private
 
-# Clone it to your machine
-gh repo clone my-project
-cd my-project
+   # Clone it to your machine
+   gh repo clone my-project
+   cd my-project
 
-# Install dependencies and pre-commit hooks
-uv sync && uv run pre-commit install
-```
+   # Install dependencies and pre-commit hooks
+   uv sync && uv run pre-commit install
+   ```
 
-Step 2: Prompt to "de-template" and make it yours:
+3. Step 3: Prompt to "de-template" and make it yours:
 
-```markdown
-# TASK: Help me make this template my own
+   ```markdown
+   # TASK: Help me make this template my own
 
-Take my project's name from this repo's name and make the template mine.
+   Take my project's name from this repo's name and make the template mine.
 
-First read @README.md — but don't rename anything inside it yet.
+   First read @README.md — but don't rename anything inside it yet.
 
-1. Rename/replace everywhere except `README.md`, then verify with
-   `uv sync --reinstall && uv run pre-commit install && uv run pre-commit run --all-files`
+   1. Rename/replace everywhere except `README.md`, then verify with
+      `uv sync --reinstall && uv run pre-commit install && uv run pre-commit run --all-files`
 
-2. Rewrite `README.md` and `.claude/CLAUDE.md` for my project
+   2. Rewrite `README.md` and `.claude/CLAUDE.md` for my project
 
-3. In a friendly way, ask me if I want to:
-    - Remove plugin `git-utils` and its marketplace `my-claude-marketplace` (it's Michelle's)
-    - Enable plugin `mattpocock-skills` and try the `/grilling` Skill
+   3. Ask if I want to install the Plugins or cleanup `.claude/settings.json`.
 
-Await my confirmation, then do it with `claude plugin` commands (`--scope project`).
-I like simple clear messages with emojis 🙂.
-```
+   Await my confirmation, then edit the file.
 
-Step 3: Choose what to do with Matt Pocock:
+   I like simple clear messages that are easy to read, with emojis 🙂.
+   ```
 
-```shell
-# Want to use it? Currently disabled, so enable it:
-claude plugin enable mattpocock-skills@claude-plugins-official --scope project
+4. Step 4: Install the recommended VS Code [`extensions.json`](.vscode/extensions.json)
 
-# Not sure? Watch a video
-# https://www.youtube.com/@mattpocockuk
-
-# Don't want it? (it's really good)
-claude plugin uninstall mattpocock-skills@claude-plugins-official --scope project
-# (don't remove the marketplace — pyright-lsp comes from it too)
-```
-
-Step 4: Install the recommended VS Code [`extensions.json`](.vscode/extensions.json)
-
-Step 5 (optional):
-
-Query official uv docs from your agent with `/ask-docs uv [your question]` — see [michellepace/docs-for-ai](https://github.com/michellepace/docs-for-ai)
+5. Step 5 (optional): Ask uv docs `/ask-docs uv [your question]`, needs [this](https://github.com/michellepace/docs-for-ai) repo.
 
 ## This project is a "packaged application"
 
