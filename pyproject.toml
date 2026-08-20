@@ -12,7 +12,7 @@ requires-python = ">=3.14"
 dependencies = []
 
 [project.scripts]
-uv-template = "uv_template:main"
+uv-template = "uv_template.hello:main"
 
 [dependency-groups]
 dev = ["pre-commit>=4.6.2", "pyright>=1.1.411", "pytest>=9.1.1", "ruff>=0.16.3"]
@@ -21,7 +21,7 @@ dev = ["pre-commit>=4.6.2", "pyright>=1.1.411", "pytest>=9.1.1", "ruff>=0.16.3"]
 # TESTING (PYTEST)
 # =================================
 [tool.pytest.ini_options]
-testpaths = ["tests"] # where to look when no path is given on the CLI
+testpaths = ["tests"]
 addopts = "-ra"       # end-of-run summary for every non-passing test
 
 
