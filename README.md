@@ -22,10 +22,12 @@ Tooled up for deterministic feedback and a wonderful workflow.
 - [`alwayson-misc@my-claude-marketplace`](https://github.com/michellepace/my-claude-marketplace/tree/main/plugins/alwayson-misc) — My own, skills like: `manage-plugins`, `uv-pep723`
 - [`git-utils@my-claude-marketplace`](https://github.com/michellepace/my-claude-marketplace/tree/main/plugins/git-utils) — My own, skills like `gg-commit`, `gg-land-branch`
 
-These are enabled in [`.claude/settings.json`](.claude/settings.json), but you still need to install each one you want (delete the lines of any you don't):
+All except `mattpocock-skills` are enabled in [`.claude/settings.json`](.claude/settings.json). Install each one you want, and delete the `enabledPlugins` entry for any you don't:
 
 ```shell
-claude plugin install <plugin>@<marketplace> --scope project
+claude plugin install pyright-lsp@claude-plugins-official --scope project
+claude plugin install alwayson-misc@my-claude-marketplace --scope project
+claude plugin install git-utils@my-claude-marketplace --scope project
 ```
 
 ## Usage
