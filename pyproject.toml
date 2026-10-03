@@ -27,7 +27,7 @@ dev = [
 # =================================
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-ra"       # end-of-run summary for every non-passing test
+addopts = "-ra --import-mode=importlib" # summary of non-passing tests; no __init__.py needed
 
 
 # TYPE CHECKING (PYRIGHT)
@@ -63,9 +63,10 @@ ignore = [ # ignore incompatible or overly pedantic rules
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = [
+  "INP001",  # __init__.py not required
   "S101",    # assert statements are idiomatic in tests
   "PLR2004", # literal expected values are fine
-  "D1",      # docstrings not required in tests (D100-D107)
+  "D1",      # docstrings not required (D100-D107)
 ]
 
 [tool.ruff.lint.pydocstyle]
