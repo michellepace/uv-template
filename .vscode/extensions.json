@@ -5,8 +5,5 @@
         "charliermarsh.ruff",         // lint + format (by Astral, same makers as uv)
         "tamasfe.even-better-toml",   // TOML: highlight, validate, format
         "davidanson.vscode-markdownlint",  // Markdown lint + fix on save
-
-        // Rules live in the repo, not in VS Code:
-        // pyproject.toml ([tool.ruff], [tool.pyright]) and .markdownlint-cli2.yaml
     ]
 }
