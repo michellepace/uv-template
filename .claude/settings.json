@@ -5,8 +5,8 @@
       "Bash(echo *)"
     ],
     "deny": [
-      "Read(**/.env)",
-      "Read(**/.env.*)"
+      "Read(**/.env*)",
+      "Read(!.env.example)"
     ]
   },
   "enabledPlugins": {
