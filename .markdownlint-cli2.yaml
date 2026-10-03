@@ -10,6 +10,7 @@ config:
   MD033: false      # forbid inline HTML
   MD034: false      # forbid bare URLs
   MD036: false      # forbid emphasis instead of a heading
+  MD041: false      # require first line to be H1 heading
   MD046: false      # enforce consistent code block style
   MD059: false      # require descriptive link text
 
