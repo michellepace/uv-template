@@ -13,7 +13,7 @@ repos:
       - id: check-toml
 
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.23.2
+    rev: v0.23.3
     hooks:
       - id: markdownlint-cli2       # rules .markdownlint-cli2.yaml
         args: [--fix]
@@ -21,11 +21,11 @@ repos:
   - repo: https://github.com/ComPWA/taplo-pre-commit
     rev: v0.9.3
     hooks:
-      - id: taplo-format            # format TOML
+      - id: taplo-format
         types: [toml]
 
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.12.5
+    rev: 0.12.22
     hooks:
       - id: uv-lock                 # sync uv.lock ↔ pyproject.toml
 
@@ -52,7 +52,7 @@ repos:
         types_or: [python, pyproject]
         pass_filenames: false
 
-      - id: pytest                  # run tests last
+      - id: pytest
         name: pytest
         entry: uv run pytest
         language: system

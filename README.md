@@ -15,18 +15,19 @@ Tooled up for deterministic feedback and a wonderful workflow.
 
 ---
 
-🌸 PLUGINS (all disabled)
+🌸 PLUGINS
 
 - [`pyright-lsp@claude-plugins-official`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pyright-lsp) — Claude sees pyright errors, see [`pyproject.toml`](pyproject.toml)
-- [`mattpocock-skills@claude-plugins-official`](https://github.com/mattpocock/skills) — Full workflows `grilling`, `tdd`, `to-spec`
+- [`mattpocock-skills@claude-plugins-official`](https://github.com/mattpocock/skills) — Full workflows `grilling`, `tdd`, `to-spec` (disabled)
 - [`alwayson-misc@my-claude-marketplace`](https://github.com/michellepace/my-claude-marketplace/tree/main/plugins/alwayson-misc) — My own, skills like: `manage-plugins`, `uv-pep723`
 - [`git-utils@my-claude-marketplace`](https://github.com/michellepace/my-claude-marketplace/tree/main/plugins/git-utils) — My own, skills like `gg-commit`, `gg-land-branch`
 
-Plugins that you want to keep must be installed not just configured, run:
+All except `mattpocock-skills` are enabled in [`.claude/settings.json`](.claude/settings.json). Install each one you want, and delete the `enabledPlugins` entry for any you don't:
 
 ```shell
-claude plugin marketplace add <owner/repo> --scope project
-claude plugin enable <plugin>@<marketplace> --scope project
+claude plugin install pyright-lsp@claude-plugins-official --scope project
+claude plugin install alwayson-misc@my-claude-marketplace --scope project
+claude plugin install git-utils@my-claude-marketplace --scope project
 ```
 
 ## Usage
