@@ -7,7 +7,7 @@ build-backend = "uv_build"
 name = "uv-template"
 version = "0.1.0"
 description = "Add your description here"
-requires-python = ">=3.14"
+requires-python = ">=3.15"
 dependencies = []
 
 [project.scripts]
@@ -28,7 +28,7 @@ addopts = "-ra --import-mode=importlib" # summary of non-passing tests; no __ini
 # =================================
 [tool.pyright]
 typeCheckingMode = "standard" # pyright's default; strict fights untyped libs
-pythonVersion = "3.14"
+pythonVersion = "3.15"
 venvPath = "."                # Claude Code Official: LSP plugin
 venv = ".venv"                # Claude Code Official: LSP plugin
 reportUnusedImport = false    # Ruff F401 covers it
@@ -40,7 +40,7 @@ reportDuplicateImport = false # Ruff F811
 # =================================
 [tool.ruff]
 line-length = 88
-target-version = "py314"
+target-version = "py315"
 
 [tool.ruff.lint]
 select = ["ALL"]
