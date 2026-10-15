@@ -1,6 +1,6 @@
 ![UV logo with cute Python snake](uv-banner.jpg)
 
-General purpose [uv](https://docs.astral.sh/uv/) Python template for projects built with AI coding agents, specifically Claude Code.
+General purpose [uv](https://docs.astral.sh/uv/) Python template (>=3.15) for projects built with AI coding agents, specifically Claude Code.
 
 Tooled up for deterministic feedback and a wonderful workflow.
 
@@ -8,10 +8,10 @@ Tooled up for deterministic feedback and a wonderful workflow.
 
 🌸 DETERMINISTIC
 
-- `ruff` — linting
+- `ruff` — linting + formatting
 - `pyright` — type-checking
 - `pytest` — testing
-- `pre-commit` — check all pre-commit
+- `pre-commit` — runs every check above on each commit
 
 ---
 
@@ -22,13 +22,19 @@ Tooled up for deterministic feedback and a wonderful workflow.
 - [`alwayson-misc@my-claude-marketplace`](https://github.com/michellepace/my-claude-marketplace/tree/main/plugins/alwayson-misc) — My own, skills like: `manage-plugins`, `uv-pep723`
 - [`git-utils@my-claude-marketplace`](https://github.com/michellepace/my-claude-marketplace/tree/main/plugins/git-utils) — My own, skills like `gg-commit`, `gg-land-branch`
 
-All except `mattpocock-skills` are enabled in [`.claude/settings.json`](.claude/settings.json). Install each one you want, and delete the `enabledPlugins` entry for any you don't:
+Install the ones you want — installing also enables it in [`.claude/settings.json`](.claude/settings.json):
 
 ```shell
 claude plugin install pyright-lsp@claude-plugins-official --scope project
+claude plugin install mattpocock-skills@claude-plugins-official --scope project
 claude plugin install alwayson-misc@my-claude-marketplace --scope project
 claude plugin install git-utils@my-claude-marketplace --scope project
 ```
+
+Don't want one?
+
+- Disable it: `claude plugin disable <plugin> --scope project`
+- Remove it (if installed): `claude plugin uninstall <plugin> --scope project`
 
 ## Usage
 
@@ -64,7 +70,7 @@ claude plugin install git-utils@my-claude-marketplace --scope project
 
    3. Ask if I want to install the Plugins or cleanup `.claude/settings.json`.
 
-   Await my confirmation, then edit the file.
+   Await my confirmation, then edit `.claude/settings.json`.
 
    I like simple clear messages that are easy to read, with emojis 🙂.
    ```

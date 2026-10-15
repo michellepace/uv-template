@@ -1,40 +1,34 @@
 [build-system]
 # Packaged for the [project.scripts] CLIs only; never published.
-requires = ["uv_build>=0.12.22,<0.13"]
+requires = ["uv_build>=0.13.0,<0.14"]
 build-backend = "uv_build"
 
 [project]
 name = "uv-template"
 version = "0.1.0"
 description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.15"
 dependencies = []
 
 [project.scripts]
 uv-template = "uv_template.hello:main"
 
 [dependency-groups]
-dev = [
-  "pre-commit>=4.6.2",
-  "pyright>=1.1.414",
-  "pytest>=9.1.1",
-  "ruff>=0.16.10",
-]
+dev = ["pre-commit>=4.7.0", "pyright>=1.1.414", "pytest>=9.1.1", "ruff>=0.17.0"]
 
 
 # TESTING (PYTEST)
 # =================================
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-ra"       # end-of-run summary for every non-passing test
+addopts = "-ra --import-mode=importlib" # summary of non-passing tests; no __init__.py needed
 
 
 # TYPE CHECKING (PYRIGHT)
 # =================================
 [tool.pyright]
 typeCheckingMode = "standard" # pyright's default; strict fights untyped libs
-pythonVersion = "3.14"
+pythonVersion = "3.15"
 venvPath = "."                # Claude Code Official: LSP plugin
 venv = ".venv"                # Claude Code Official: LSP plugin
 reportUnusedImport = false    # Ruff F401 covers it
@@ -46,7 +40,7 @@ reportDuplicateImport = false # Ruff F811
 # =================================
 [tool.ruff]
 line-length = 88
-target-version = "py314"
+target-version = "py315"
 
 [tool.ruff.lint]
 select = ["ALL"]
@@ -63,9 +57,10 @@ ignore = [ # ignore incompatible or overly pedantic rules
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = [
+  "INP001",  # __init__.py not required
   "S101",    # assert statements are idiomatic in tests
   "PLR2004", # literal expected values are fine
-  "D1",      # docstrings not required in tests (D100-D107)
+  "D1",      # docstrings not required (D100-D107)
 ]
 
 [tool.ruff.lint.pydocstyle]
