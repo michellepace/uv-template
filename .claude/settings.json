@@ -12,22 +12,22 @@
     ]
   },
   "enabledPlugins": {
-    "alwayson-misc@my-claude-marketplace": true,
-    "git-utils@my-claude-marketplace": true,
     "pyright-lsp@claude-plugins-official": true,
-    "mattpocock-skills@claude-plugins-official": false
+    "mattpocock-skills@claude-plugins-official": false,
+    "alwayson-misc@my-claude-marketplace": true,
+    "git-utils@my-claude-marketplace": true
   },
   "extraKnownMarketplaces": {
-    "my-claude-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "michellepace/my-claude-marketplace"
-      }
-    },
     "claude-plugins-official": {
       "source": {
         "source": "github",
         "repo": "anthropics/claude-plugins-official"
+      }
+    },
+    "my-claude-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "michellepace/my-claude-marketplace"
       }
     }
   }
