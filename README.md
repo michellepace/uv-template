@@ -17,9 +17,9 @@ Tooled up for deterministic feedback and a wonderful workflow.
 
 🌸 PLUGINS
 
-- [`pyright-lsp@claude-plugins-official`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pyright-lsp) — Claude sees pyright errors, see [`pyproject.toml`](pyproject.toml)
+- [`pyright-lsp@claude-plugins-official`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pyright-lsp) — Claude sees pyright errors as it edits (local only), see [`pyproject.toml`](pyproject.toml)
 - [`mattpocock-skills@claude-plugins-official`](https://github.com/mattpocock/skills) — Full workflows `grilling`, `tdd`, `to-spec` (disabled)
-- [`alwayson-misc@my-claude-marketplace`](https://github.com/michellepace/my-claude-marketplace/tree/main/plugins/alwayson-misc) — My own, skills like: `manage-plugins`, `uv-pep723`
+- [`alwayson-misc@my-claude-marketplace`](https://github.com/michellepace/my-claude-marketplace/tree/main/plugins/alwayson-misc) — My own, skills like: `manage-plugins`, `grill-me`
 - [`git-utils@my-claude-marketplace`](https://github.com/michellepace/my-claude-marketplace/tree/main/plugins/git-utils) — My own, skills like `gg-commit`, `gg-land-branch`
 
 Install the ones you want — installing also enables it in [`.claude/settings.json`](.claude/settings.json):
@@ -35,6 +35,12 @@ Don't want one?
 
 - Disable it: `claude plugin disable <plugin> --scope project`
 - Remove it (if installed): `claude plugin uninstall <plugin> --scope project`
+
+---
+
+🌸 CLOUD
+
+In Claude Code cloud sessions, [`session-start.sh`](.claude/hooks/session-start.sh) sets everything up for you: uv, dependencies, pre-commit hooks, and the plugins above, on or off as in `settings.json`.
 
 ## Usage
 

@@ -11,6 +11,19 @@
       "Bash(uv auth token*)"
     ]
   },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/session-start.sh"
+          }
+        ]
+      }
+    ]
+  },
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
     "mattpocock-skills@claude-plugins-official": false,
