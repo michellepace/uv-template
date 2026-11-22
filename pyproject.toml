@@ -16,6 +16,9 @@ uv-template = "uv_template.hello:main"
 [dependency-groups]
 dev = ["pre-commit>=4.7.0", "pyright>=1.1.414", "pytest>=9.2.0", "ruff>=0.17.6"]
 
+[tool.uv]
+required-version = ">=0.13.9" # session-start.sh brings cloud up to it
+
 
 # TESTING (PYTEST)
 # =================================
