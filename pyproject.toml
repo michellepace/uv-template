@@ -1,6 +1,6 @@
 [build-system]
 # Packaged for the [project.scripts] CLIs only; never published.
-requires = ["uv_build>=0.13.0,<0.14"]
+requires = ["uv_build>=0.13.9,<0.14"]
 build-backend = "uv_build"
 
 [project]
@@ -14,7 +14,7 @@ dependencies = []
 uv-template = "uv_template.hello:main"
 
 [dependency-groups]
-dev = ["pre-commit>=4.7.0", "pyright>=1.1.414", "pytest>=9.1.1", "ruff>=0.17.0"]
+dev = ["pre-commit>=4.7.0", "pyright>=1.1.414", "pytest>=9.2.0", "ruff>=0.17.6"]
 
 
 # TESTING (PYTEST)
